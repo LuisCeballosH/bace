@@ -15,9 +15,10 @@ const routes: Routes = [
     children: [
       { path: 'invertir', component: InvertirComponent, data: { role: 'inversor' } },
       { path: 'proyectos', component: ProyectosComponent, data: { role: 'emprendedor' } },
-      { path: '', redirectTo: '/proyectos', pathMatch: 'full' },
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
     ]
   },
+
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];

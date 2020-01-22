@@ -29,6 +29,8 @@ export class ProyectoService {
 
   create(proyecto: Proyecto) {
     proyecto.id = new Date().getTime();
+    proyecto.percentage = 100;
+    proyecto.total = proyecto.amount;
     this.proyectos.unshift(proyecto);
     this.saveLocalStorage('proyectos', this.proyectos);
   }

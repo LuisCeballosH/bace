@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     const response = this.ps.login(this.user);
     if (response) {
       if (response.role === 'emprendedor') {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/proyectos');
       } else {
         this.router.navigateByUrl('/invertir');
       }

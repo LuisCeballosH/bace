@@ -10,7 +10,7 @@ import { Proyecto } from 'src/app/models/proyecto.model';
 export class ListarProyectosComponent implements OnInit {
 
   proyectos: Proyecto[] = [];
-  total: number;
+  total = 0;
 
   constructor(private ps: ProyectoService) { }
 
@@ -20,6 +20,15 @@ export class ListarProyectosComponent implements OnInit {
 
   getProyectos() {
     this.proyectos = this.ps.index();
-  }
+    
+    if (this.proyectos) {
+console.log('test');
+      this.proyectos.forEach(p => {
+        if (p.total !== p.amount) {
+          this.total += p.total - p.amount;
+        }
+      });
+    }
 
+  }
 }

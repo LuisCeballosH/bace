@@ -1,6 +1,7 @@
 <div class="card mb-4">
     <div class="card-header">
-        Proyectos
+        <div style="display: inline-block;">Proyectos</div>
+        <div style="display: inline-block; float: right;">{{cash}} $</div>
     </div>
     <div class="card-body">
         <div class="container">
@@ -9,15 +10,18 @@
                     <div class="card" *ngFor="let p of proyectos; let i = index">
                         <img src="assets/img/undraw_posting_photo.svg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{p.title}}</h5>
+                            <h5 class="card-title">{{p.title}} ({{p.amount}}$)</h5>
                             <p class="card-text">{{p.description}}</p>
                         </div>
                         <div class="progress" style="margin: 0px 10px 10px;">
-                            <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                aria-valuemax="100"></div>
+                            <div class="progress-bar" role="progressbar" [attr.ariaValuenow]="p.percentage"
+                                aria-valuenow="" aria-valuemin="0" aria-valuemax="100"
+                                [style.width]="p.percentage + '%'"></div>
                         </div>
                         <div style="margin: 0px 10px 10px;">
-                            <button type="submit" class="btn btn-warning" style="width: 100%;">Invertir</button>
+                            <input type="text" class="form-control" [(ngModel)]="invertir" type="number" min="0"
+                                [max]="p.amount">
+                            <button type="submit" (click)="onClick(p)" class="btn btn-warning" style="width: 100%; margin: 10px 0;">Invertir</button>
                         </div>
                     </div>
                 </div>
