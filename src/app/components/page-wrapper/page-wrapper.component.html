@@ -14,7 +14,7 @@
 
         <!-- Nav Item - Proyectos -->
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/proyectos']" routerLinkActive="router-link-active">
+            <a class="nav-link" [routerLink]="['/proyectos']" routerLinkActive="router-link-active" *ngIf="isEmprendedor">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Proyectos</span>
             </a>
@@ -22,7 +22,7 @@
 
         <!-- Nav Item - Invertir -->
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/invertir']" routerLinkActive="router-link-active">
+            <a class="nav-link" [routerLink]="['/invertir']" routerLinkActive="router-link-active" *ngIf="isInversor">
                 <i class="fas fa-chart-line"></i>
                 <span>Invertir</span>
             </a>

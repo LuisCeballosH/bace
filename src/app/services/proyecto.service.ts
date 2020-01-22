@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Proyecto } from '../models/proyecto.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,22 +9,52 @@ export class ProyectoService {
 
   proyectos: Proyecto[] = [];
 
+  users: User[] = [
+    {
+      email: 'emprendedor@emprendedor.com',
+      password: '1234',
+      role: 'emprendedor'
+    },
+    {
+      email: 'inversor@inversor.com',
+      password: '1234',
+      role: 'inversor'
+    }
+  ]
+
   constructor() {
     this.deleteLocalStorage();
-   }
+    this.saveLocalStorage('users', this.users);
+  }
 
   create(proyecto: Proyecto) {
     proyecto.id = new Date().getTime();
     this.proyectos.unshift(proyecto);
-    this.saveLocalStorage(this.proyectos);
+    this.saveLocalStorage('proyectos', this.proyectos);
+  }
+
+  login(user: User): any {
+    const users = this.getUsers()
+    const response = users.find(u => {
+      return u.email === user.email && u.password === user.password;
+    });
+
+    this.saveLocalStorage('user', response);
+    return response;
+  }
+
+
+
+  logout() {
+    localStorage.removeItem('user');
   }
 
   index() {
     return this.getLocalStorage();
   }
 
-  saveLocalStorage(data) {
-    localStorage.setItem('proyectos', JSON.stringify(data));
+  saveLocalStorage(item, data) {
+    localStorage.setItem(item, JSON.stringify(data));
   }
 
   deleteLocalStorage() {
@@ -33,5 +64,13 @@ export class ProyectoService {
   getLocalStorage() {
     return JSON.parse(localStorage.getItem('proyectos'));
 
+  }
+
+  getUsers() {
+    return JSON.parse(localStorage.getItem('users'));
+  }
+
+  getUser() {
+    return JSON.parse(localStorage.getItem('user'));
   }
 }

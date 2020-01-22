@@ -4,16 +4,18 @@ import { PageWrapperComponent } from './components/page-wrapper/page-wrapper.com
 import { LoginComponent } from './components/login/login.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { InvertirComponent } from './components/invertir/invertir.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     component: PageWrapperComponent,
+    canActivateChild: [AuthGuard],
     children: [
-      { path: 'invertir', component: InvertirComponent },
-      { path: 'proyectos', component: ProyectosComponent },
-      { path: '', redirectTo: '/proyectos', pathMatch: 'full' }
+      { path: 'invertir', component: InvertirComponent, data: { role: 'inversor' } },
+      { path: 'proyectos', component: ProyectosComponent, data: { role: 'emprendedor' } },
+      { path: '', redirectTo: '/proyectos', pathMatch: 'full' },
     ]
   },
   { path: 'login', component: LoginComponent },
