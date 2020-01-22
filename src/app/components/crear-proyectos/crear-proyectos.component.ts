@@ -21,11 +21,12 @@ export class CrearProyectosComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.proyectoCreado.emit();
     if (form.invalid) {
       return;
     }
-    this.ps.create(this.proyecto);
+    this.ps.create(form.form.value);
+    this.proyectoCreado.emit();
+    
   }
 
 }

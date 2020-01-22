@@ -19,10 +19,10 @@ export class ListarProyectosComponent implements OnInit {
   }
 
   getProyectos() {
+    this.total = 0;
     this.proyectos = this.ps.index();
-    
+
     if (this.proyectos) {
-console.log('test');
       this.proyectos.forEach(p => {
         if (p.total !== p.amount) {
           this.total += p.total - p.amount;

@@ -7,7 +7,7 @@ import { User } from '../models/user.model';
 })
 export class ProyectoService {
 
-  proyectos: Proyecto[] = [];
+  proyectos: any[] = [];
 
   users: User[] = [
     {
@@ -61,6 +61,12 @@ export class ProyectoService {
 
   deleteLocalStorage() {
     localStorage.clear();
+  }
+
+  
+
+  deleteProyectos() {
+    localStorage.removeItem('proyectos');
   }
 
   getLocalStorage() {

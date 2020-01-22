@@ -16,10 +16,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   proyectoCreado() {
-    console.log('test');
-    setTimeout(() => {
-      this.appListarProyectos.getProyectos();
-    }, 300);
+    this.appListarProyectos.getProyectos();
   }
 
 }

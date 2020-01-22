@@ -15,6 +15,7 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { CrearProyectosComponent } from './components/crear-proyectos/crear-proyectos.component';
 import { ListarProyectosComponent } from './components/listar-proyectos/listar-proyectos.component';
 import { InvertirComponent } from './components/invertir/invertir.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InvertirComponent } from './components/invertir/invertir.component';
     ProyectosComponent,
     CrearProyectosComponent,
     ListarProyectosComponent,
-    InvertirComponent
+    InvertirComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
