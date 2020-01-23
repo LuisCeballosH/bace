@@ -21,10 +21,16 @@ export class CardComponent implements OnInit {
   constructor(private ps: ProyectoService) { }
 
   ngOnInit() {
+    this.get();
+  }
+
+  get(){
     this.proyectos = this.ps.index();
+    console.log(this.proyectos);
   }
 
   onClick() {
+    this.get();
     if (this.invertir > this.p.amount || isNaN(this.invertir)) {
       return;
     }
@@ -39,10 +45,9 @@ export class CardComponent implements OnInit {
         p.percentage = p.percentage - percentage;
       }
     });
-
-    console.log(this.proyectos);
     this.ps.proyectos = this.proyectos;
-    this.ps.saveLocalStorage('proyectos', this.proyectos)
+    this.ps.saveLocalStorage('proyectos', this.proyectos);
+    // this.get();
   }
 
 }

@@ -10,7 +10,6 @@ import { ProyectoService } from 'src/app/services/proyecto.service';
 export class InvertirComponent implements OnInit {
 
   cash = 20000;
-  ariaValuenow = 100;
 
   proyectos: Proyecto[] = [];
 

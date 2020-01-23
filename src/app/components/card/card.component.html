@@ -3,6 +3,10 @@
     <div class="card-body">
         <h5 class="card-title">{{p.title}} ({{p.amount}}$)</h5>
         <p class="card-text">{{p.description}}</p>
+        <p>
+            {{p.percentage.toFixed(2) +'%'}}
+        </p>
+
     </div>
     <div class="progress" style="margin: 0px 10px 10px;">
         <div class="progress-bar" role="progressbar" [attr.ariaValuenow]="p.percentage" aria-valuenow=""
